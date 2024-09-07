@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payement via le ligthning network</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="icon" href="./img/logo.png" sizes="128x128" type="image/png">
+</head>
+<body>
+    <section class="sectionGobal">
+        <section>
+            <img src="./img/home.png" alt="Achétez dans la securité et rapidité" class="imgHome">
+        </section>
+        <section action="payement" class="container">
+            <div class="lineAmount">
+                <div>
+                    <label for="amount" class="amount">Montant FCFA : </label>
+                    <input type="number" min="0" id="amount" class="amountInput" required>
+                    <span class="msgAmount"></span>
+                </div>
+                <span><span>Min: 1000 fcfa</span><div><i class="valueSend">0</i><i> Fcfa </i><i class="equal">=</i><i class="equalSatoshis">0</i><i> BTC</i></div></span>
+            </div>
+            <div class="line">
+                <label for="userName" class="userName">Nom : </label>
+                <input type="text" id="userName" class="userNameInput" required>
+                <span class="msgName"></span>
+            </div>
+            <div class="line">
+                <label for="lastName" class="lastName">Prenom : </label>
+                <input type="text"  id="lastName" class="lastNameInput" required>
+                <span class="msgLastName"></span>
+            
+            </div>
+            <div class="line">
+                <label for="email" class="email">Email : </label>
+                <input type="text"  id="email" class="emailInput" required>
+                <span class="msgEmail"></span>
+            </div>
+            <div class="sectionPayement">
+                <span>Selectionnez un moyen de payement</span>
+
+
+                <select class="modePayement" id="modePayement" >
+                    <option value="Orange money"selected>Orange money</option>
+                    <option value="Moov money">Moov money</option>
+                    <option value="Coris money">Coris money</option>
+                </select>
+            
+            </div> 
+        
+            <div class="line">
+                <label for="motif" class="motif"> Motif du payement : </label>
+                <textarea id="motif" class="motifInput" required></textarea>
+                <span class="msgMotif"></span>
+            </div>
+            <div class="line">
+                <label for="adrWallet" class="adrWallet">Adresse Bitcoin: </label>
+                <input type="email"  id="adrWallet" class="adrWalletInput" required>
+                <span class="msgWallet"></span>
+            
+            </div>
+        
+            <button type="submit" class="sendInfo">Lancer l'operation</button>
+        </section>
+    </section>
+    <script src="index.js"></script>
+    
+</body>
+</html>
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payement via le Lightning Network</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <section action="payement" class="container">
+        <div class="lineAmount">
+            <div>
+                <label for="amount" class="amount">Montant FCFA : </label>
+                <input type="number" min="0" id="amount" class="amountInput" required>
+            </div>
+            <span><span>Min: 1000 fcfa</span><div><i class="valueSend">1000</i><i> Fcfa </i><i class="equal">=</i><i class="equalSatoshis">1000</i><i> BTC</i></div></span>
+        </div>
+        <div class="line">
+            <label for="userName" class="userName">Nom : </label>
+            <input type="text" id="userName" class="userNameInput" required>
+            <span class="msgName"></span>
+        </div>
+        <div class="line">
+            <label for="lastName" class="lastName">Prenom : </label>
+            <input type="text"  id="lastName" class="lastNameInput" required>
+            <span class="msgLastName"></span>
+        </div>
+        <div class="line">
+            <label for="email" class="email">Email : </label>
+            <input type="email"  id="email" class="emailInput" required>
+        </div>
+        <div class="sectionPayement">
+            <span>Selectionnez un moyen de payement</span>
+            <ul class="modePayement" id="payementDetaille">
+                <li class="payementLine" value="Orange money">
+                    <img src="#" alt=" Orange">
+                    <h4>Orange money</h4>
+                </li>
+                <li class="payementLine" value="Moov money">
+                    <img src="#" alt=" Moov">
+                    <h4>Moov money</h4>
+                </li>
+                <li class="payementLine">
+                    <img src="#" alt=" coris Bank" value="Coris money">
+                    <h4>Coris money</h4>
+                </li>
+            </ul>
+        </div> 
+        <div class="line">
+            <label for="motif" class="motif"> Motif du payement : </label>
+            <textarea id="motif" class="motifInput" required></textarea>
+            <span class="msgMotif"></span>
+        </div>
+        <div class="line">
+            <label for="adrWallet" class="adrWallet">Adresse wallet: </label>
+            <input type="text" id="adrWallet" class="adrWalletInput" required>
+        </div>
+        
+        <button type="submit" class="sendInfo">Lancer l'operation</button>
+    </section>
+    <script src="index.js"></script>
+</body>
+</html>
+
+ -->

@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@grpc/grpc-js": "^1.11.1",
+    "axios": "^1.7.5",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "lightning": "^10.19.0",
+    "ln-service": "^57.19.0",
+    "lndconnect": "^0.2.10",
+    "mongoose": "^8.6.0",
+    "mysql": "^2.18.1"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payement via le ligthning network</title>
+    <link rel="icon" href="./img/logo.png" sizes="128x128" type="image/png">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <iframe class="showInvoice"></iframe>
+    <div class="container">
+        <h1>Payement Bitcoin sur le reseau ligthning  network</h1>
+        <h3 class="etat">Operation succèe !!</h3>
+        <section class="qrSection">
+            <div for="codeQr"><h3 class="qrTitle"> Scannez votre facture</h3></div>
+            <div class="codeQr">
+                <script src="qrcode.min.js"></script>
+            </div>
+        </section>
+        <section>
+            <button class="btnEnreg">
+                 Enregistrer
+            </button>
+            <button class="btnShow">
+                afficher
+           </button>
+            
+        </section>
+
+    </div>
+    <div class="affichepdf"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="module" src="./index.js"></script>
+</body>
+</html>

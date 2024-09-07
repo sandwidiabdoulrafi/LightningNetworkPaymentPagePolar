@@ -1,0 +1,196 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.imgHome{
+    height: 1000px;
+    width: 100%;
+    animation: 1s;
+}
+.imgHome:hover{
+    height: 1100px;
+}
+.sectionGobal{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 50px;
+    height: 90vh;
+    /* padding :12px; */
+}
+.equal{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.amount, .motif, .userName
+,.email, .lastName, .adrWallet{
+    font-size:40px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.lineAmount{
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.lineAmount span{
+    margin-top: 10px;
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+}
+.lineAmount span div{
+    font-size: 25px;
+}
+.lineAmount span span{
+    font-size: 25px;
+    width: 700px;
+}
+.msgMotif, .msgWallet ,.msgLastName, .msgEmail, .msgAmount ,.msgName{
+    color: red;
+    font-size:35px ;
+    font-weight: 900;
+    margin-left: 15px;
+}
+.line{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    justify-content: space-between;
+}
+.amountInput, .userNameInput, 
+.lastNameInput ,.emailInput, .adrWalletInput
+{
+    width: 500px;
+    height: 20px;
+    border: 5px solid #4f24e7aa;
+    margin-left: 10px;
+    border-radius: 20px ;
+    font-size: 40px;
+    padding: 10px;
+    color: rgb(99, 27, 121);
+   
+}
+.amountInput:hover, .userNameInput:hover, 
+.lastNameInput:hover ,.emailInput:hover, .adrWalletInput:hover{
+    width: 500px;
+    height: 35px;
+    padding: 15px;
+}
+sendInfo
+.amountInput::-webkit-inner-spin-button, 
+.amountInput::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+}
+.motifInput{
+    width: 600px;
+    height: 200px;
+    border: 5px solid #4f24e7aa;
+    margin-left: 10px;
+    border-radius: 20px ;
+    letter-spacing: 1PX;
+    font-size: 40px;
+    padding: 8px;
+    overflow-wrap: break-word;
+}
+/* .adressCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
+
+} */
+/* .adressCard h3{
+    font-size: 60px;
+    font-weight: 800;
+    color: rgb(44, 92, 88);
+} */
+/* .qrcard{
+    width: 400px;
+    height: 300px;
+    border: 3px solid #4f24e7aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.adressCard button{
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    background-color: rgb(44, 92, 88);
+    color: blanchedalmond;
+} */
+/* .adressCard button:focus{
+    background-color: blanchedalmond;
+    color: rgb(44, 92, 88);
+} */
+.sendInfo{
+    width: 400px;
+    height: 60px;
+    font-size: 35px;
+    color: white;
+    border-radius: 10%;
+    background: radial-gradient(circle, #4f2b4f,  rgb(16, 119, 255));
+}
+.sendInfo:hover{
+    font-size: 40px;
+    border: 5px solid #7d058d;
+    color: black;
+    width: 400px;
+    height: 60px;
+}
+.sendInfo:focus{
+    opacity: 0.5;
+}
+.modePayement{
+    width: 700px;
+    height: 100px;
+    padding: 10px;
+    border: 5px solid #4f24e7aa;
+    border-radius: 30px;
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 100px;
+}
+.modePayement option{
+    font-size: 35px;
+    font-weight: 600;
+}
+
+
+.sectionPayement{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.sectionPayement span{
+    font-size: 40px;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+}
+
+.modePayement option{
+    font-size: 29px;
+    font: 400;
+}
+
+/* payementLine */
