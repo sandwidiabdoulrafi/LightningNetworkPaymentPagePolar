@@ -1,9 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const amount = document.querySelector('.amountInput');
-    const userName = document.querySelector('.userNameInput');
-    const userLastname = document.querySelector('.lastNameInput');
-    const email = document.querySelector('.emailInput');
     const description = document.querySelector('.motifInput');
     const destiWallet = document.querySelector('.adrWalletInput');
     const sendInfo = document.querySelector('.sendInfo');
@@ -63,26 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Email
-    function verificationEmail(email,msgEmail){
-        if(email.value===''){
-            email.style.borderColor='red';
-            msgEmail.textContent = 'Vide';
-        }else{
-            const validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!email.value.match(validEmail)) {
-                
-                email.style.borderColor = 'red';
-                msgEmail.textContent = 'Invalide';
-                ['false', email.value]
-            } else {
-                email.style.borderColor = 'green';
-                msgEmail.textContent = 'Valide';
-                msgEmail.style.color= 'green';
-                return ['true', email.value];
-            }
-        }
-    };
     function verifiWallet(destiWallet){
         const validWallet = /^(1|3|bc1)[a-zA-Z0-9]{25,39}$/;
         const msgWallet = document.querySelector('.msgWallet');
@@ -123,28 +100,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Envoi des informations
     sendInfo.addEventListener('click', function() {
-        // Saisie du nom
-        const msgName = document.querySelector('.msgName');
-
-        const [IsValidUserName, verifUserName] = verificationInput(userName,msgName);
-        
-        // Saisie du prenom
-        const msgLastName = document.querySelector('.msgLastName');
-        const [IsValidUserLastname, verifUserLastname] = verificationInput(userLastname,msgLastName);
         
         // Saisie du motif
         const msgMotif = document.querySelector('.msgMotif');
         const [IsValidDescription, verifDescription] = verificationInput(description,msgMotif);
-        // email
-        const msgEmail = document.querySelector('.msgEmail');
-        const [IsValidEmail,verifEmail] = verificationEmail(email,msgEmail);
         
         // Adresse Wallet
-        
         const [IsValidWallet, validWallet] = verifiWallet(destiWallet);
         
         // Verification du choix de payement
-        const isValidInput =[IsValidEmail,IsValidWallet,IsValidUserName,IsValidUserLastname,IsValidDescription]
+        const isValidInput =[IsValidWallet,IsValidDescription]
         console.log('isValidInput:', isValidInput);
         
         
@@ -176,14 +141,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const [isSucce, nameOperation, amountSend] = verifAllInput (found);
         
         // transfert des informations vers la page de dédie a la facture
-        function verificationOperation(isSucce,nameOperation,amountSend,verifUserLastname,verifUserName,verifDescription,validWallet,verifEmail){
+        function verificationOperation(isSucce,nameOperation,amountSend,verifDescription,validWallet){
             if(isSucce === 'true'){
                 // alert('toute les verification on ete effectuer');
                     
                 fetch('/submit',{
                     method: 'POST',
                     headers: {'type du contenu': 'data'},
-                    body: JSON.stringify({nameOperation, amountSend, verifUserLastname, verifUserName, verifDescription, validWallet, verifEmail})
+                    body: JSON.stringify({nameOperation, amountSend, verifDescription, validWallet})
                 })
                 .then(reponse => reponse.json)
                 .then(data => {
@@ -196,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(isSucce);
             }
         }
-        verificationOperation(isSucce,nameOperation,amountSend,verifUserLastname,verifUserName,verifDescription,validWallet,verifEmail);
+        verificationOperation(isSucce,nameOperation,amountSend,verifDescription,validWallet);
         
     });
 
@@ -210,31 +175,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 msgText.textContent='';
             };
                 const msgWallet = document.querySelector('.msgWallet');
-                intialise(userName,msgName);
-                intialise(userLastname,msgLastName);
                 intialise(description,msgMotif);
                 intialise(amount,msgAmount);
                 intialise(destiWallet,msgWallet);
-                intialise(email,msgEmail)
         }
 
 
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

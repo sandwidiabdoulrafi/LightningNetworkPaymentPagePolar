@@ -3,20 +3,21 @@
     padding: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+body{
+    background-color: #C49FFF;
+}
 .imgHome{
-    height: 1000px;
-    width: 100%;
-    animation: 1s;
+    height: 400px;
+    width: 300px;
 }
-.imgHome:hover{
-    height: 1100px;
-}
+
 .sectionGobal{
     position: fixed;
     display: flex;
     flex-direction: row;
     width: 100%;
     align-items: center;
+    margin-top: 30px;
     justify-content: center;
 }
 .container{
@@ -25,19 +26,17 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-top: 10px;
     margin-left: 50px;
-    height: 90vh;
+    height: 70vh;
     /* padding :12px; */
 }
 .equal{
     margin-left: 10px;
     margin-right: 10px;
 }
-.amount, .motif, .userName
-,.email, .lastName, .adrWallet{
-    font-size:40px;
-    font-weight: 900;
+.amount, .motif, .modeSelect, .adrWallet{
+    font-size:28px;
+    font-weight: 700;
     cursor: pointer;
 }
 .lineAmount{
@@ -47,23 +46,24 @@
     margin-bottom: 40px;
 }
 .lineAmount span{
-    margin-top: 10px;
+    margin-top: 0px;
     display: flex;
     align-items: center; 
     justify-content: space-around;
 }
 .lineAmount span div{
-    font-size: 25px;
+    font-size: 15px;
+    margin-left: 10px;
 }
 .lineAmount span span{
     font-size: 25px;
-    width: 700px;
+    width: 200px;
+
 }
-.msgMotif, .msgWallet ,.msgLastName, .msgEmail, .msgAmount ,.msgName{
+.msgMotif, .msgWallet .msgAmount{
     color: red;
-    font-size:35px ;
-    font-weight: 900;
-    margin-left: 15px;
+    font-size:20px ;
+    margin-left: 2px;
 }
 .line{
     display: flex;
@@ -71,41 +71,41 @@
     margin-bottom: 40px;
     justify-content: space-between;
 }
-.amountInput, .userNameInput, 
-.lastNameInput ,.emailInput, .adrWalletInput
+.amountInput,
+.adrWalletInput
 {
-    width: 500px;
-    height: 20px;
-    border: 5px solid #4f24e7aa;
+    width: 250px;
+    height: 15px;
+    border: 2px solid #4f24e7aa;
     margin-left: 10px;
     border-radius: 20px ;
-    font-size: 40px;
-    padding: 10px;
+    font-size: 24px;
+    padding: 3px;
     color: rgb(99, 27, 121);
-   
 }
-.amountInput:hover, .userNameInput:hover, 
-.lastNameInput:hover ,.emailInput:hover, .adrWalletInput:hover{
-    width: 500px;
-    height: 35px;
-    padding: 15px;
+.amountInput:hover, .adrWalletInput:hover{
+    width: 210px;
+    height: 15px;
+    padding: 10px;
 }
-sendInfo
 .amountInput::-webkit-inner-spin-button, 
 .amountInput::-webkit-outer-spin-button{
     -webkit-appearance: none;
 }
 .motifInput{
-    width: 600px;
-    height: 200px;
-    border: 5px solid #4f24e7aa;
+    width: 500px;
+    height: 70px;
     margin-left: 10px;
     border-radius: 20px ;
     letter-spacing: 1PX;
-    font-size: 40px;
+    font-size: 24px;
     padding: 8px;
     overflow-wrap: break-word;
+    border: 2px solid #4f24e7aa;
 }
+
+
+
 /* .adressCard{
     display: flex;
     flex-direction: column;
@@ -144,53 +144,35 @@ sendInfo
     color: rgb(44, 92, 88);
 } */
 .sendInfo{
-    width: 400px;
+    width: 200px;
     height: 60px;
-    font-size: 35px;
+    font-size: 25px;
     color: white;
     border-radius: 10%;
     background: radial-gradient(circle, #4f2b4f,  rgb(16, 119, 255));
 }
 .sendInfo:hover{
-    font-size: 40px;
+    font-size: 27px;
     border: 5px solid #7d058d;
     color: black;
-    width: 400px;
+    width: 225px;
     height: 60px;
 }
 .sendInfo:focus{
     opacity: 0.5;
 }
 .modePayement{
-    width: 700px;
-    height: 100px;
-    padding: 10px;
-    border: 5px solid #4f24e7aa;
+    width: 300px;
+    height: 60px;
+    padding: 5px;
+    border: 2px solid #4f24e7aa;
     border-radius: 30px;
-    font-size: 35px;
-    font-weight: 600;
-    margin-bottom: 100px;
+    font-size: 24px;
+    font-weight: 100;
+    margin-left: 10px;
 }
 .modePayement option{
-    font-size: 35px;
-    font-weight: 600;
-}
-
-
-.sectionPayement{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.sectionPayement span{
-    font-size: 40px;
-    letter-spacing: 2px;
-    margin-bottom: 7px;
-}
-
-.modePayement option{
-    font-size: 29px;
-    font: 400;
+    font-size: 20px;
 }
 
 /* payementLine */
