@@ -5,6 +5,43 @@
 }
 body{
     background-color: #C49FFF;
+    display: flex;
+    justify-content: center;
+    
+}
+@keyframes animBordeBottom{
+    from{
+        left: 0;
+    }
+    to{
+        left: 90%;
+    }
+    
+}
+.msgOperation{
+    /* border-bottom: 5px solid rgb(127, 78, 240); */
+    padding: 20px;
+    width: 250px;
+    height: 20px;
+    background-color: rgba(241, 227, 227, 0.925);
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    display: none;
+    
+}
+.msgOperation::after{
+    content: '';
+    z-index: -1;
+    position: absolute;
+    opacity: 0.5;
+    height: 45px;
+    width: 25px;
+    background-color: white;
+    animation: animBordeBottom 2s linear infinite;
+    box-sizing: border-box;
+
 }
 .imgHome{
     height: 400px;
@@ -46,7 +83,7 @@ body{
     margin-bottom: 40px;
 }
 .lineAmount span{
-    margin-top: 0px;
+    margin-top: 6px;
     display: flex;
     align-items: center; 
     justify-content: space-around;
@@ -56,8 +93,9 @@ body{
     margin-left: 10px;
 }
 .lineAmount span span{
-    font-size: 25px;
+    font-size: 15px;
     width: 200px;
+    margin-left: 150px;
 
 }
 .msgMotif, .msgWallet .msgAmount{

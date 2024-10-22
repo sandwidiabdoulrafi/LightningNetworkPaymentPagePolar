@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
+
+
 // ------------------------------SECTION connection avec la base de donnée--------------------------------------------------------
 const { createPool} = require('mysql');
 const connectBD = express();
@@ -24,8 +26,6 @@ const singer= express();
 singer.use(express.json());
 
 singer.post('/user/inscription',(req,rep)=>{
-
-
 
     const dataInscrip = req.body;
     const neWnom = dataInscrip.nom;
@@ -68,7 +68,7 @@ singer.post('/user/inscription',(req,rep)=>{
 
 
 singer.listen(10020,()=>{
-    console.log('le serveur  ecouter sur le port 10020 pour l inscription');
+    console.log('le serveur  ecoute sur le port 10020 pour l inscription');
 });
 
 
@@ -94,13 +94,14 @@ connectBD.post('/user/connection', (req, rep)=>{
 
         if(error){
             // en cas d'erreur envoyer ce message vers le mon js serveur
-            console.error('erreur lors lors de la verification');
+            console.error('erreur lors de la verification');
             return rep.status(500).send({message: 'Erreur lors de la verification'});
         }else{
             if(result.length > 0){
-                // l utilisateur existe donc je vais donnée accès au site de payement
+                // l utilisateur existe donc je vais donnée accès a la page de payement
+               
                 console.log('connexion accordée');
-                return rep.status(200).send({message:'acces accorde', autorisation: true});
+                return rep.status(200).send({message:'acces accorde', autorisation: true , result: result[0]});
             }else{
                 // l utilisateur n'existe pas il faut une inscription
                 console.log('connexion refusée');
@@ -111,29 +112,10 @@ connectBD.post('/user/connection', (req, rep)=>{
     } );
 })
 
+
+
 connectBD.listen('10010', ()=>{
     console.log('le serveur de connection  ecoute sur le port 10010');
 });
 
 
-
-
-
-// ------------------------------SECTION DE DEMO--------------------------------------------------------
-
-
-
-
-// pool.query('INSERT INTO userInfo(nom, prenom, genre, email, mot_pass, nom_uttilisateur) VALUES ("sandwidi","sahouda","Homme", "souda@gmail.com","987456321", "sandwidiSoudada")', (error, result, fields)=>{
-//     if(error){
-//         return console.log(error);
-//     }
-//     return console.log('utilisateur enregistrer avec succee',result);
-// })
-
-// pool.query("SELECT * FROM userInfo", (error, result, fields)=>{
-//     if(error){
-//         return console.log(error);
-//     }
-//     return console.log(result);
-// })

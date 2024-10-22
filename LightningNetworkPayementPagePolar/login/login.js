@@ -1,4 +1,10 @@
 const btnSubmit = document.querySelector(".btn");
+//------------------------------------------CREATION D'UNE CLASS USER----------------------------------------
+
+
+
+
+
 
 btnSubmit.addEventListener('click', (event)=>{
 
@@ -8,7 +14,7 @@ btnSubmit.addEventListener('click', (event)=>{
     const nomUtilisateur = document.querySelector(".userName");
     const mot_de_passe = document.querySelector('.password');
     const msgText = document.querySelector('.msgText');
-
+    
     // verifion si le champ est vide 
     function estVide(text){
         if(text.value !==''){
@@ -56,20 +62,28 @@ btnSubmit.addEventListener('click', (event)=>{
                 })
 
                 .then(data=>{
-                    alert(data);
                     if(data.autorisation){
+
                         // autorisation accordé a l'utilisateur
+
+                        //console.log('les donnes des utilisateur : ', data.result.nom );
+                        
+                        
+
                         alert('autorisation accordé a l utilisateur');
+                        
                         
                         msgText.style.display = 'block';
                         msgText.style.color = 'green';
                         msgText.innerHTML = 'connexion réussie';
 
+                       const User =  {} ;
+                       console.log('les donnes des utilisateur : ', User );
+
                         // allons sur la page de payement apres 3s
                         setTimeout(()=>{
-                            window.location.href= '../index.html';
+                            window.location.href = `../index.html?nom=${data.result.nom}&prenom=${data.result.prenom}&email=${data.result.email}`;
                         }, 2500);
-                        
                         //  initialisation des input
                         mot_de_passe.value='';
                         nomUtilisateur.value='';
@@ -95,7 +109,57 @@ btnSubmit.addEventListener('click', (event)=>{
         
     };
     envoyeBackend(verifMot_de_passe,verifNomUtilisateur);
-
-
     
 })
+
+
+
+
+// class User {
+
+//     //contructeur et les attributs
+
+//     constructor(nom, prenom, nomUtilisateur, genre, email ){
+//         this.nom = nom;
+//         this.prenom = prenom;
+//         this.nomUtilisateur = nomUtilisateur;
+//         this.genre = genre;
+//         this.email = email;
+//     }
+
+//     // les geters
+//     getNom(){
+//         return this.nom;
+//     }
+//     getPrenom(){
+//         return this.prenom;
+//     }
+//     getGenre(){
+//         return this.genre;
+//     }
+//     getNomUtilisateur(){
+//         return this.nomUtilisateur;
+//     }
+//     getEmail(){
+//         return this.email;
+//     }
+//     getNomComplet(){
+//         return `${this.nom} ${this.prenom}`;
+//     }
+//     getInformation(){
+//         console.log("------------------------------les informations  de L' utilisateur sont : ------------------------");
+//         console.log("nom : ", this.nom);
+//         console.log("prenom : ", this.prenom);
+//         console.log("genre : ", this.genre);
+//         console.log("nomUtilisateur : ", this.nomUtilisateur);
+//         console.log("email : ", this.email);
+//     }
+
+// }
+
+
+
+// let user;
+
+// user =  new User(data.result.nom, data.result.prenom, data.result.nom_utilisateur, data.result.genre, data.result.email);
+                        

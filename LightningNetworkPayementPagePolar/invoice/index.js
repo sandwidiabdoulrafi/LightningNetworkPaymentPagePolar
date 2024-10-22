@@ -1,157 +1,223 @@
-// const { jsPDF } = window.jspdf;
-
-
+const { jsPDF } = window.jspdf;
 
 
 // document.addEventListener("DOMContentLoaded", function () {
+
+//     let Data = {};
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const invoiceId = urlParams.get('invoiceId');
+
+//     fetch('http://localhost:10040/invoiceData',{
+//         method: 'POST',
+//         headers: {'Content-type' : 'application/json',},
+//         body: JSON.stringify({invoiceId})
+//     })
+//     .then(async reponse =>{
+//         if(reponse.ok){
+//             Data = await reponse.json();
+//             console.log('---------------------------------------------------la facture:',Data );
+//             console.log('la facture data.user:',Data.user );
+//         }else{
+//             console.log('la facture:',Data );
+//         }
+//     })
+    
+    
+//     .catch(error =>(console.log("Erreur lors de la demande par l'interface  facture Erreur:  ", error)))
+
 //     // Données à passer à la facture
-//     const facture = "Données de la facture";
+    
 
 //     // Génération du reçu sous format PDF
-//     function generationPDF(facture){
-//         const doc = new jsPDF();
-//         doc.text(facture, 10, 10);
+//     function generationPDF(Data){
+//         const doc = new jsPDF({
+//             orientation: 'portrait', 
+//             unit: 'mm',          
+//             format: 'a3' 
+//         });
+
+        
+//         //recuperation de la largeur de la page 
+//         let title = 'FACTURE DE LA TRANSACTION';
+//         let widthPage = doc.internal.pageSize.getWidth();
+//         let heightPage = doc.internal.pageSize.getHeight();
+        
+//         //determintion de  la largeur du texte
+//         let titleSize = doc.getTextWidth(title);
+//         let xPos = (widthPage - titleSize ) / 2 ;
+//         console.log('la facture data.user:',Data.user );
+//         let user= Data.user;
+//         console.log('user  ',user)
+
+//         doc.setFont("helvetica", "bold");
+//         doc.text(title, xPos, 20);
+//         doc.setFontSize(18);
+//         doc.setFont("courier","bolditalic");
+//         doc.text('Date : '+Data.date, 190 ,30);
+//         doc.text('Nom du client(e) : ', 10 ,40);
+//         doc.text(user.nom, 100 ,40);
+//         doc.text('Prenom du client(e) : ', 10 ,50);
+//         doc.text(user.prenom, 100 ,50);
+//         doc.text('Moyen de payement : ', 10 ,60);
+//         doc.text(Data.moyenPayment, 100 ,60);
+//         doc.text('Montant : ', 10 ,70);
+//         doc.text(Data.amount+' Satoshi', 100 ,70);
+
+//         let wrapAdressPayment = doc.splitTextToSize(Data.payment_request.r_hash, widthPage - 20);
+//         doc.text('Adresse de paiement : ', 10 ,100);
+//         doc.text(wrapAdressPayment, 100 ,100);
+
+//         let wrapHash = doc.splitTextToSize(Data.payment_request.payment_addr, widthPage - 20);
+//         doc.text('Hash : ', 10 ,120);
+//         doc.text(wrapHash, 100 ,120);
+
+//         let motif = doc.splitTextToSize(Data.motif, widthPage - 20);
+//         doc.text('Motif : ', 10 ,140);
+//         doc.text(motif, 100 ,140);
+
+
+//         let wrapAdressCli = doc.splitTextToSize(Data.adressCli, widthPage - 20);
+//         doc.text('Adresse du client : ', 10 ,170);
+//         doc.text(wrapAdressCli, 100 ,170);
+
+        
+
+
+
+
+
+
+
+
+
+        
+//         let yPos= heightPage - 10;
+//         doc.setFontSize(15);
+//         doc.text('Identifiant  '+Data.invoiceId, 100 ,yPos);
+
+//         doc.setFont("courier","bolditalic");
+//         doc.setFontSize(20);
+//         doc.text('Merci beaucoup pour votre fidélité.', 100 ,300);
+
 //         const docUrl = doc.output('dataurlstring'); // Convertir en Data URL pour affichage
-//         return docUrl;
+//         return { doc, docUrl };
 //     }
 
 //     // Générer et afficher le PDF
-//     const facturePDF = generationPDF(facture);
-//     console.log(facturePDF);
+//     const { doc, docUrl } = generationPDF(Data);
 
-//     const afficher = document.querySelector('.btnShow');
 //     const showInvoice = document.querySelector('.showInvoice');
 //     const enregistre = document.querySelector('.btnEnreg');
-
-//     // afficher la facture 
-
-//     function getShowInvoice(section){
-//         alert('afficher avec succè');
-//         section.src = facturePDF;
-//     }
-//     // afficher.addEventListener('click', getShowInvoice(showInvoice));
-
-
-
-//     // sauvegarder le reçu en local
-//     function saveIvoceLocal(document){
-//         document.save('a4.pdf');
-//         alert('sauvegarder avec succè');
-//     }
-//     // enregistre.addEventListener("click", saveIvoceLocal(facturePDF));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     // Génération du code QR
-//     function generationQRCode(facturePDF){
-//         const codeQr = document.querySelector('.codeQr');
-//         if (codeQr) {
-//             new QRCode(codeQr, {
-//                 text: facturePDF,
-//                 width: 450,
-//                 height: 310
-//             });
-//         }
+    
+//     // Fonction pour afficher la facture dans un iframe
+//     function getShowInvoice() {
+//         showInvoice.src = docUrl;
 //     }
 
-//     const facturePDF2 = 'VOUS AVEZ SCANNÉ AVEC SUCCÈS';
-//     var scanQR = generationQRCode(facturePDF2);
-
-
-
-
-
+//     // Fonction pour sauvegarder le reçu en local
+//     function saveInvoiceLocal() {
+//         doc.save('Reçu du payement de satoshi.pdf');
+//     }
+//     getShowInvoice()
+//     enregistre.addEventListener("click", saveInvoiceLocal);
 // });
 
-
-
-
-const { jsPDF } = window.jspdf;
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Données à passer à la facture
-    const facture = "Données de la facture";
+    let Data = {};
+    const urlParams = new URLSearchParams(window.location.search);
+    const invoiceId = urlParams.get('invoiceId');
+
+    fetch('http://localhost:10040/invoiceData', {
+        method: 'POST',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify({invoiceId})
+    })
+    .then(async response => {
+        if (response.ok) {
+            Data = await response.json();
+            console.log('---------------------------------------------------la facture:', Data);
+            console.log('la facture data.user:', Data.user);
+            generationPDF(Data);  // Appeler la fonction après la réception des données
+        } else {
+            console.log('Erreur lors de la récupération des données:', Data);
+        }
+    })
+    .catch(error => {
+        console.log("Erreur lors de la demande par l'interface facture. Erreur: ", error);
+    });
 
     // Génération du reçu sous format PDF
-    function generationPDF(facture){
-        const doc = new jsPDF();
+    function generationPDF(Data) {
+        const doc = new jsPDF({
+            orientation: 'portrait', 
+            unit: 'mm',          
+            format: 'a3'
+        });
+
+        let title = 'FACTURE DE LA TRANSACTION';
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+        let titleSize = doc.getTextWidth(title);
+        let xPos = (widthPage - titleSize) / 2;
+
+        let user = Data.user;  // Utilisation des données utilisateur après leur récupération
+        console.log('user:', user);
+
         doc.setFont("helvetica", "bold");
-        doc.text(facture, 50, 30);
+        doc.text(title, xPos, 20);
+        doc.setFontSize(18);
+        doc.setFont("courier", "bolditalic");
+        doc.text('Date : ' + Data.date, 190, 30);
+        doc.text('Nom du client(e) : ', 10, 40);
+        doc.text(user.nom, 100, 40);
+        doc.text('Prenom du client(e) : ', 10, 50);
+        doc.text(user.prenom, 100, 50);
+        doc.text('Moyen de payement : ', 10, 60);
+        doc.text(Data.moyenPayment, 100, 60);
+        doc.text('Montant : ', 10, 70);
+        doc.text(Data.amount + ' Satoshi', 100, 70);
+
+        
+
+        let converHash =converStringhexadecimal(Data.payment_request.r_hash.data)
+
+        let wrapHash = doc.splitTextToSize(converHash, widthPage - 20);
+        console.log('converHash. ::: ',converHash)
+        doc.text('Hash : ', 10, 120);
+        doc.text(wrapHash, 100, 120);
+
+        let motif = doc.splitTextToSize(Data.motif, widthPage - 20);
+        doc.text('Motif : ', 10, 140);
+        doc.text(motif, 100, 140);
+
+        let wrapAdressCli = doc.splitTextToSize(Data.adressCli, widthPage - 20);
+        doc.text('Adresse de paiement : ', 10, 170);
+        doc.text(wrapAdressCli, 100, 170);
+
+        let yPos = heightPage - 10;
+        doc.setFontSize(15);
+        doc.text('Identifiant  ' + Data.invoiceId, 100, yPos);
+
+        doc.setFont("courier", "bolditalic");
+        doc.setFontSize(20);
+        doc.text('Merci beaucoup pour votre fidélité.', 100, 300);
+
         const docUrl = doc.output('dataurlstring'); // Convertir en Data URL pour affichage
-        return { doc, docUrl };
+        displayPDF(docUrl);  // Afficher le PDF dans un iframe
     }
 
-    // Générer et afficher le PDF
-    const { doc, docUrl } = generationPDF(facture);
-
-    const afficher = document.querySelector('.btnShow');
-    const showInvoice = document.querySelector('.showInvoice');
-    const enregistre = document.querySelector('.btnEnreg');
-    alert(docUrl);
-    // Fonction pour afficher la facture dans un iframe
-    function getShowInvoice() {
-        showInvoice.style.display='flex';
+    // Fonction pour afficher le PDF dans un iframe
+    function displayPDF(docUrl) {
+        const showInvoice = document.querySelector('.showInvoice');
         showInvoice.src = docUrl;
-        alert('Affiché avec succès');
     }
-    afficher.addEventListener('click', getShowInvoice);
 
     // Fonction pour sauvegarder le reçu en local
-    function saveInvoiceLocal() {
-        doc.save('a4.pdf');
-    }
-    enregistre.addEventListener("click", saveInvoiceLocal);
-
-    // Génération du code QR
-
-
-// envoyer au backend pour generer une page qui affiche le le pdf et recuperer le lien pour le remettre dans le 
-// qr code pour le scannage
-    fetch('http://localhost:8860/linkOfPdf',{
-        method: 'POST',
-        headers:{
-            'Titre':'facture',
-        },
-        body: JSON.stringify(docUrl),
-    })
-    .then(reponse=>reponse.json())
-
-    // ici on change le lien du pdf par le lien generer en backend
-    
-    .then(data=>{docUrl=data.reply})
-    .catch(error=>{
-        console.log("l'erreur est : ", error);
-    })
-
-
-
-    function generationQRCode(data){
-        const codeQr = document.querySelector('.codeQr');
-        if (codeQr) {
-            new QRCode(codeQr, {
-                // text: data,
-                text: `http://127.0.0.1:5601?pdf=${encodeURIComponent(data)}`,
-                width: 450,
-                height: 310
-            });
-        }
-    }
-    console.log('docUrl:', docUrl);
-    
-    // Générer un code QR avec l'URL du PDF
-    const lepdf ="le contenue du qr c'est moi";
-    generationQRCode(lepdf);
+    const enregistre = document.querySelector('.btnEnreg');
+    enregistre.addEventListener("click", () => {
+        const doc = new jsPDF();  // Créer un nouveau document jsPDF pour sauvegarde
+        doc.save('Reçu du payement de satoshi.pdf');
+    });
 });
 
 
@@ -162,68 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// git commit -m "ajout de la generation du pdf "
-
-// cd mon-projet
-// git add .
-// git commit -m "Correction de bugs dans le formulaire de contact"
-// git push origin main
-
-
-
-
-
-
-// const { jsPDF } = window.jspdf;
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Données à passer à la facture
-//     const facture = "Données de la facture";
-
-//     // Génération du reçu sous format PDF
-//     function generationPDF(facture){
-//         const doc = new jsPDF();
-//         doc.setFont("helvetica", "bold");
-//         doc.text(facture, 50, 30);
-//         const docUrl = doc.output('dataurlstring'); // Convertir en Data URL pour affichage
-//         return { doc, docUrl };
-//     }
-
-//     // Générer et afficher le PDF
-//     const { doc, docUrl } = generationPDF(facture);
-
-//     const afficher = document.querySelector('.btnShow');
-//     const showInvoice = document.querySelector('.showInvoice');
-//     const enregistre = document.querySelector('.btnEnreg');
-
-//     // Fonction pour afficher la facture dans un iframe
-//     function getShowInvoice() {
-//         showInvoice.style.display = 'flex';
-//         showInvoice.src = docUrl;
-//         alert('Affiché avec succès');
-//     }
-//     afficher.addEventListener('click', getShowInvoice);
-
-//     // Fonction pour sauvegarder le reçu en local
-//     function saveInvoiceLocal() {
-//         doc.save('a4.pdf');
-//     }
-//     enregistre.addEventListener("click", saveInvoiceLocal);
-
-//     // Génération du code QR avec l'URL simulée
-//     function generationQRCode(data){
-//         const codeQr = document.querySelector('.codeQr');
-//         if (codeQr) {
-//             new QRCode(codeQr, {
-//                 text: `http://127.0.0.1:5601?pdf=${encodeURIComponent(data)}`,
-//                 width: 450,
-//                 height: 310
-//             });
-//         }
-//     }
-
-//     console.log('docUrl:', docUrl);
-    
-//     // Générer un code QR avec l'URL du PDF
-//     generationQRCode(docUrl);
-// });
+function converStringhexadecimal(tableHexadecimal) {
+    return tableHexadecimal.map(byte => byte.toString(16).padStart(2, '0')).join('');
+}

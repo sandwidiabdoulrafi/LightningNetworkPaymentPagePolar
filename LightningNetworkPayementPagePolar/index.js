@@ -1,3 +1,15 @@
+const urlParams = new URLSearchParams(window.location.search);
+    const user = {
+        nom :urlParams.get('nom'),
+        prenom: urlParams.get('prenom'),
+        email: urlParams.get('email')
+    };
+
+    console.log( "Mes infos sont  : ",user );
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const amount = document.querySelector('.amountInput');
@@ -6,9 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const sendInfo = document.querySelector('.sendInfo');
     const valueSend = document.querySelector('.valueSend');
     const equalSatoshis = document.querySelector('.equalSatoshis');
-    const moyenPayement = document.querySelectorAll('.payementLine');
-
-    
 
     function paymentMobile(item,amount){
         if(item==='Orange money'){
@@ -61,14 +70,14 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function verifiWallet(destiWallet){
-        const validWallet = /^(1|3|bc1)[a-zA-Z0-9]{25,39}$/;
+        const validWallet = /^(lnbcrt)[a-zA-Z0-9]{1,}$/; 
         const msgWallet = document.querySelector('.msgWallet');
         
         if(destiWallet.value===''){
             msgWallet.textContent = 'Vide';
             destiWallet.style.borderColor = 'red';
-        }else{
-            if (!destiWallet.value.match(validWallet)) {
+        }else{ 
+                if (!destiWallet.value.match(validWallet)) {
                 destiWallet.style.borderColor = 'red';
                 msgWallet.textContent = 'Invalide';
                 msgWallet.style.color='red';
@@ -110,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Verification du choix de payement
         const isValidInput =[IsValidWallet,IsValidDescription]
-        console.log('isValidInput:', isValidInput);
+
         
         
         function validInput(isValidInput){
@@ -123,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const found = validInput(isValidInput);
         
-        console.log('fount:', found);
 
         
         // montant
@@ -141,19 +149,59 @@ document.addEventListener('DOMContentLoaded', function() {
         const [isSucce, nameOperation, amountSend] = verifAllInput (found);
         
         // transfert des informations vers la page de dédie a la facture
-        function verificationOperation(isSucce,nameOperation,amountSend,verifDescription,validWallet){
+        async function verificationOperation(isSucce,nameOperation,amountSend,verifDescription,validWallet){
+
+
+            // initialisation
+            function initialiseAll(){
+                
+                
+                
+                return true;
+            }
+
             if(isSucce === 'true'){
                 // alert('toute les verification on ete effectuer');
-                    
-                fetch('/submit',{
+                const msgOperation = document.querySelector('.msgOperation');
+                msgOperation.style.display= 'block'; 
+                
+                fetch('http://localhost:10030/application/operation',{
                     method: 'POST',
-                    headers: {'type du contenu': 'data'},
-                    body: JSON.stringify({nameOperation, amountSend, verifDescription, validWallet})
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify({
+                        moyenPayment: nameOperation,
+                        montant: amountSend, 
+                        motif: verifDescription, 
+                        adressCli: validWallet,
+                        user: user
+                    })
                 })
-                .then(reponse => reponse.json)
-                .then(data => {
-                    Window.location.href = `invoice/index.html?invoiceInfo=${encodeURIComponent(data.invoiceInfo)}`;
+                .then(async reponse =>{
+                    if(reponse.ok){
+                        const data = await reponse.json();
+                        const IdPayement = data.invoiceId;
+                        
+                        //initialisation
+
+                        alert('initialisation reuissit');
+                        function intialise(input, msgText){
+                            input.style.borderColor='#4f24e7aa';
+                            input.value=''
+                            msgText.textContent='';
+                        };
+                        setTimeout(()=>{
+                            const msgWallet = document.querySelector('.msgWallet');
+                            intialise(description,msgMotif);
+                            intialise(amount,msgAmount);
+                            intialise(destiWallet,msgWallet);
+                            msgOperation.style.display= 'none';
+                        }, 4000);
+                        window.location.href = `../invoice/index.html?invoiceId=${IdPayement}`;
+
+                        
+                    }
                 })
+                
                 .catch(error => console.log('Erreur :', error));
                 
             }else{
@@ -166,19 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
-        // initialisation
-        
-        function initialiseAll(){
-            function intialise(input, msgText){
-                input.style.borderColor='#4f24e7aa';
-                input.value=''
-                msgText.textContent='';
-            };
-                const msgWallet = document.querySelector('.msgWallet');
-                intialise(description,msgMotif);
-                intialise(amount,msgAmount);
-                intialise(destiWallet,msgWallet);
-        }
+ 
 
 
 // ------------------------------------------------------------------------------
