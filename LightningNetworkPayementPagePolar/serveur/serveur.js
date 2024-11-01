@@ -4,6 +4,16 @@ const cors = require('cors');
 
 
 // ------------------------------SECTION connection avec la base de donnée--------------------------------------------------------
+// const { createPool} = require('mysql');
+// const connectBD = express();
+// const pool = createPool({
+//     host:"",
+//     user:"",
+//     password:"",
+//     database:"",
+//     port: ,
+// })
+
 const { createPool} = require('mysql');
 const connectBD = express();
 const pool = createPool({
@@ -11,17 +21,16 @@ const pool = createPool({
     user:"root",
     password:"",
     database:"lightningpayementsite",
-    connectionLimit: 10
+    connectionLimit: 10 
 })
-
-
 
 
 // ------------------------------SECTION DE l'INSCRIPTION--------------------------------------------------------
 
 const singer= express();
- singer.use(cors()); //{origin: 'http://127.0.0.1:5501'}
-// recperation des donne d'inscription
+singer.use(cors()); 
+
+
 
 singer.use(express.json());
 
@@ -77,8 +86,7 @@ singer.listen(10020,()=>{
 // paser les information reçu
 
 connectBD.use(express.json());
-connectBD.use(cors()); //{origin: 'http://127.0.0.1:5500'}
-
+connectBD.use(cors()); 
 // traitement de la donnée de connexion
 
 connectBD.post('/user/connection', (req, rep)=>{
@@ -99,7 +107,7 @@ connectBD.post('/user/connection', (req, rep)=>{
         }else{
             if(result.length > 0){
                 // l utilisateur existe donc je vais donnée accès a la page de payement
-               
+            
                 console.log('connexion accordée');
                 return rep.status(200).send({message:'acces accorde', autorisation: true , result: result[0]});
             }else{

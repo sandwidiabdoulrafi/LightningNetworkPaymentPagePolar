@@ -122,6 +122,12 @@ const { jsPDF } = window.jspdf;
 //     enregistre.addEventListener("click", saveInvoiceLocal);
 // });
 
+
+
+
+
+
+let Doc;
 document.addEventListener("DOMContentLoaded", function () {
     let Data = {};
     const urlParams = new URLSearchParams(window.location.search);
@@ -160,8 +166,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let titleSize = doc.getTextWidth(title);
         let xPos = (widthPage - titleSize) / 2;
 
-        let user = Data.user;  // Utilisation des données utilisateur après leur récupération
-        console.log('user:', user);
+        let user = Data.user;
+        if (!user || !Data.payment_request) {
+            console.log('Données utilisateur ou paiement manquantes');
+            return;
+        }
 
         doc.setFont("helvetica", "bold");
         doc.text(title, xPos, 20);
@@ -177,12 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
         doc.text('Montant : ', 10, 70);
         doc.text(Data.amount + ' Satoshi', 100, 70);
 
-        
-
-        let converHash =converStringhexadecimal(Data.payment_request.r_hash.data)
-
+        let converHash = converStringhexadecimal(Data.payment_request.r_hash.data);
         let wrapHash = doc.splitTextToSize(converHash, widthPage - 20);
-        console.log('converHash. ::: ',converHash)
         doc.text('Hash : ', 10, 120);
         doc.text(wrapHash, 100, 120);
 
@@ -204,30 +209,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const docUrl = doc.output('dataurlstring'); // Convertir en Data URL pour affichage
         displayPDF(docUrl);  // Afficher le PDF dans un iframe
+        Doc = doc; // Assigner le document PDF pour sauvegarde
     }
 
     // Fonction pour afficher le PDF dans un iframe
     function displayPDF(docUrl) {
         const showInvoice = document.querySelector('.showInvoice');
-        showInvoice.src = docUrl;
+        if (showInvoice) {
+            showInvoice.src = docUrl;
+        } else {
+            console.log("L'élément d'affichage de la facture n'a pas été trouvé.");
+        }
     }
 
     // Fonction pour sauvegarder le reçu en local
     const enregistre = document.querySelector('.btnEnreg');
     enregistre.addEventListener("click", () => {
-        const doc = new jsPDF();  // Créer un nouveau document jsPDF pour sauvegarde
-        doc.save('Reçu du payement de satoshi.pdf');
+        if (Doc) {
+            Doc.save('Reçu du payement de satoshi.pdf');
+        } else {
+            console.log("Le document PDF n'est pas encore prêt pour la sauvegarde.");
+        }
     });
 });
 
-
-
-
-
-
-
-
-
+// Fonction de conversion de chaîne en hexadécimal
 function converStringhexadecimal(tableHexadecimal) {
     return tableHexadecimal.map(byte => byte.toString(16).padStart(2, '0')).join('');
 }

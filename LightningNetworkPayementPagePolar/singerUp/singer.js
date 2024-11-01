@@ -55,7 +55,7 @@ inscrire.addEventListener('click',async (event)=>{
     async function transfert(dataFormat) {
 
         try {
-            const reponse = await fetch('http://localhost:10020/user/inscription',{
+            const reponse = await fetch('http://localhost:10010/user/inscription',{
                 method: 'POST',
                 headers: {'Content-type':'application/json'},
                 body: JSON.stringify(dataFormat)
@@ -133,7 +133,7 @@ inscrire.addEventListener('click',async (event)=>{
                     msgError.innerHTML = "Inscription réussi";
         
                     setTimeout(()=>{
-                        window.location.href = '../login/login.html';
+                        window.location.href = '../index.html';
                     }, 3000);
         
         

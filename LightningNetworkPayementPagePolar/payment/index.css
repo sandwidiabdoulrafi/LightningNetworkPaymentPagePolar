@@ -1,0 +1,216 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+body{
+    background-color: #C49FFF;
+    display: flex;
+    justify-content: center;
+    
+}
+@keyframes animBordeBottom{
+    from{
+        left: 0;
+    }
+    to{
+        left: 90%;
+    }
+    
+}
+.msgOperation{
+    /* border-bottom: 5px solid rgb(127, 78, 240); */
+    padding: 20px;
+    width: 250px;
+    height: 20px;
+    background-color: rgba(241, 227, 227, 0.925);
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    display: none;
+    
+}
+.msgOperation::after{
+    content: '';
+    z-index: -1;
+    position: absolute;
+    opacity: 0.5;
+    height: 45px;
+    width: 25px;
+    background-color: white;
+    animation: animBordeBottom 2s linear infinite;
+    box-sizing: border-box;
+
+}
+.imgHome{
+    height: 400px;
+    width: 300px;
+}
+
+.sectionGobal{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    margin-top: 30px;
+    justify-content: center;
+}
+.container{
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 50px;
+    height: 70vh;
+    /* padding :12px; */
+}
+.equal{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.amount, .motif, .modeSelect, .adrWallet{
+    font-size:28px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.lineAmount{
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.lineAmount span{
+    margin-top: 6px;
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+}
+.lineAmount span div{
+    font-size: 15px;
+    margin-left: 10px;
+}
+.lineAmount span span{
+    font-size: 15px;
+    width: 200px;
+    margin-left: 150px;
+
+}
+.msgMotif, .msgWallet .msgAmount{
+    color: red;
+    font-size:20px ;
+    margin-left: 2px;
+}
+.line{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    justify-content: space-between;
+}
+.amountInput,
+.adrWalletInput
+{
+    width: 250px;
+    height: 15px;
+    border: 2px solid #4f24e7aa;
+    margin-left: 10px;
+    border-radius: 20px ;
+    font-size: 24px;
+    padding: 3px;
+    color: rgb(99, 27, 121);
+}
+.amountInput:hover, .adrWalletInput:hover{
+    width: 210px;
+    height: 15px;
+    padding: 10px;
+}
+.amountInput::-webkit-inner-spin-button, 
+.amountInput::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+}
+.motifInput{
+    width: 500px;
+    height: 70px;
+    margin-left: 10px;
+    border-radius: 20px ;
+    letter-spacing: 1PX;
+    font-size: 24px;
+    padding: 8px;
+    overflow-wrap: break-word;
+    border: 2px solid #4f24e7aa;
+}
+
+
+
+/* .adressCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
+
+} */
+/* .adressCard h3{
+    font-size: 60px;
+    font-weight: 800;
+    color: rgb(44, 92, 88);
+} */
+/* .qrcard{
+    width: 400px;
+    height: 300px;
+    border: 3px solid #4f24e7aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.adressCard button{
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    background-color: rgb(44, 92, 88);
+    color: blanchedalmond;
+} */
+/* .adressCard button:focus{
+    background-color: blanchedalmond;
+    color: rgb(44, 92, 88);
+} */
+.sendInfo{
+    width: 200px;
+    height: 60px;
+    font-size: 25px;
+    color: white;
+    border-radius: 10%;
+    background: radial-gradient(circle, #4f2b4f,  rgb(16, 119, 255));
+}
+.sendInfo:hover{
+    font-size: 27px;
+    border: 5px solid #7d058d;
+    color: black;
+    width: 225px;
+    height: 60px;
+}
+.sendInfo:focus{
+    opacity: 0.5;
+}
+.modePayement{
+    width: 300px;
+    height: 60px;
+    padding: 5px;
+    border: 2px solid #4f24e7aa;
+    border-radius: 30px;
+    font-size: 24px;
+    font-weight: 100;
+    margin-left: 10px;
+}
+.modePayement option{
+    font-size: 20px;
+}
+
+/* payementLine */

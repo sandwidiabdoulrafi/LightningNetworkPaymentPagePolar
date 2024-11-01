@@ -106,7 +106,7 @@ operation.post('/application/operation', (req, rep)=>{
     } else {
       console.log("Réponse du paiement :", response);
       const invoice = {
-        value: amount  // Le montant en satoshis que tu veux demander
+        value: amount 
       };
       
       lightning.addInvoice(invoice, (err, response) => {

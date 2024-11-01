@@ -3,51 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>payement via le ligthning network</title>
+    <title>Connexion au site de payement de bitcoi</title>
     <link rel="stylesheet" href="./index.css">
     <link rel="icon" href="./img/logo.png" sizes="128x128" type="image/png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
-    <div><div class="msgOperation">Operation en cours d'execution</div></div>
-    <section class="sectionGobal">
-        <section>
-            <img src="./img/home.png" alt="Achétez dans la securité et rapidité" class="imgHome">
-        </section>
-        <section action="payement" class="container">
-            <div class="lineAmount">
-                <div>
-                    <label for="amount" class="amount">Montant FCFA : </label>
-                    <input type="number" min="0" id="amount" class="amountInput" required>
-                    <span class="msgAmount"></span>
-                </div>
-                <span><span>Min: 1000 fcfa</span><div><i class="valueSend">0</i><i> Fcfa </i><i class="equal">=</i><i class="equalSatoshis">0</i><i> BTC</i></div></span>
+    <div class="wrapper">
+        <form action="">
+            <h1>CONNEXION</h1>
+            <div class="msg"><h4 class="msgText"></h4></div>
+            <div class="input-box" >
+                <input type="text" class="userName" placeholder="Nom d'utilisateur" required >
+                <i class='bx bxs-user'></i>
             </div>
-            
-            <div class="line">
-                <label for="modePayement" class="modeSelect">Moyen de payement : </label>
-                <select class="modePayement" id="modePayement" >
-                    <option value="Orange money"selected>Orange money</option>
-                    <option value="Moov money">Moov money</option>
-                    <option value="Coris money">Coris money</option>
-                </select>
+            <div class="input-box" >
+                <input type="password" class="password" placeholder="Mot de passe" required >
+                <i id="showPassword" class='bx bxs-lock'></i>
             </div>
-        
-            <div class="line">
-                <label for="motif" class="motif"> Motif du payement : </label>
-                <textarea id="motif" class="motifInput" required></textarea>
-                <span class="msgMotif"></span>
+            <div class="remember-forgot">
+                <label ><input type="checkbox">me rappeler</label>
+                <a href="#">Mot de passe oublier ?</a>
             </div>
-            <div class="line">
-                <label for="adrWallet" class="adrWallet">Adresse Bitcoin: </label>
-                <input type="email"  id="adrWallet" class="adrWalletInput" required>
-                <span class="msgWallet"></span>
-            
+            <button type="submit" class="btn"> se connecter </button>
+            <div class="registre-link">
+                <p> vous avez pas de compte ? <a href="./singerUp/singer.html">Eregistrez-vous</a></p>
             </div>
-        
-            <button type="submit" class="sendInfo">Lancer l'operation</button>
-        </section>
-    </section>
-    <script type="module" src="index.js"></script>
-    
-</body>
+        </form>
+    </div>
+    <script src="./index.js"></script>
 </html>
